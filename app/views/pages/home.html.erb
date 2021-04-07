@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-3">
+	<h1>Home page</h1>
+
+	<h2>Your total points is</h2>
+	<% points = 0 %>
+	<% @transactions.each do |t| %>
+		<% points += t.points %>
+	<% end %>
+	<h3><%= points %></h3>
+	
+
+	<%= link_to "Add transaction", new_transaction_path %>
+	<%= link_to "View transactions", transactions_path %>
+</div>

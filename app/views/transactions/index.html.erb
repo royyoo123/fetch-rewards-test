@@ -1,0 +1,17 @@
+<div class="container mt-3">
+	<% @transactions.each do |t| %>
+	<h2>Payer: <%= t.payer %></h2>
+	<p>Points: <%= t.points %></p>
+	<p>timestamp: <%= t.created_at %></p>
+<% end %>
+<h2>Spend points</h2>
+<%= form_for :point_deduction, url: deduct_points_transactions_path do |f| %>
+	<%= f.text_field :points %>
+	<%= f.submit %>
+<% end %>
+
+	<%= link_to "Go back", root_path %>
+</div>
+
+
+

@@ -3,10 +3,14 @@
 
 	<h2>Your total points is</h2>
 	<% points = 0 %>
-	<% @transactions.each do |t| %>
-		<% points += t.points %>
+	<% if current_user.present? %>
+		<% @transactions.each do |t| %>
+			<% points += t.points %>
+		<% end %>
+		<h3><%= points %></h3>
+	<% else %>
+		<h3>0</h3>
 	<% end %>
-	<h3><%= points %></h3>
 	
 
 	<%= link_to "Add transaction", new_transaction_path %>

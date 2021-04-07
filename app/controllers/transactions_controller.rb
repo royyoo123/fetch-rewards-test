@@ -23,24 +23,13 @@ class TransactionsController < ApplicationController
 	end
 
 	def index
-
 		@transactions = current_user.transactions.order(:created_at)
-		# if params[:points].present?
-		# 	@transactions.order(:created_at)
-
-		# 	@transactions.each do |t|
-		# 		t.points -= params[:points].to_i
-		# 		t.save
-		# 	end
-		# end
 	end
 	def deduct_points
 		remaining_points = points_params[:points].to_i
 		@transactions = current_user.transactions.order(:created_at)
 		@transactions.each do |t|
 			next if t.points.to_i.negative? || t.points.to_i.zero?
-			#remainder = t.points
-
 			if t.points.to_i >= remaining_points
 			  #remainder = 0
 			  t.points -= remaining_points
